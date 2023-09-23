@@ -390,3 +390,75 @@ border-color: rgba(99, 0, 164, .6);
   display: block; /* Pour centrer l'image horizontalement */
   margin: 0 auto; /* Pour centrer l'image horizontalement */
 }
+
+.profile-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.profile-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-label {
+  font-weight: bold;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+.profile-table td {
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+.profile-table td:first-child {
+  width: 30%;
+}
+
+.profile-image {
+  width: 40%; /* Largeur de l'image */
+  height: 40%; /* Hauteur de l'image */
+  border-radius: 20%; /* Pour une forme circulaire, si nécessaire */
+  display: block; /* Pour centrer l'image horizontalement */
+  margin: 0 auto; /* Pour centrer l'image horizontalement */
+  margin-bottom: 10px;
+}
+
+.stats-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.stats-group {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 0 10px;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.stat-label {
+  font-weight: bold;
+}
+
+.stat-value {
+  margin-left: 10px;
+}

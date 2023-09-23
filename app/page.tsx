@@ -75,20 +75,21 @@ export default function Authentication() {
                 </Link>
               </div>
               <div className="ma-ligne"></div>
-              <img
-                src={ImageLens.src} // Utilisez .src pour obtenir l'URL
-                className="lens-image"
-              />
+              {wallet.picture ? (
+              <img src={wallet.picture.original.url} alt="Profile Picture" className='profile-image' />
+                ) : (
+                  <img
+                          src={ImageLens.src} // Utilisez .src pour obtenir l'URL
+                          className="lens-image"
+                        />
+                )}
               <h1 className="title">Your profile 🌱</h1>
-
+              
               <h2><b>{wallet.handle}</b></h2>
               <p>{wallet.bio}</p>
-              <button
-                onClick={logout}
-                className="principal-button"
-              >
-                Edit profile
-              </button>
+              <Link href="/myprofile" className='principal-button'>
+                Edit my profile
+              </Link>
               <button
                 onClick={logout}
                 className="principal-button"
