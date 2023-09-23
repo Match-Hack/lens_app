@@ -17,11 +17,368 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  text-align: center;
+  color : white;
+  font-family: DM Sans, sans-serif;
+  background-color: rgba(0, 0, 0, 0);
+  background-image: url("background_pipou.png");
+  background-size: cover;
+}
+
+/*  */
+
+/* Main.css */
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  min-height: 100vh;
+  text-align: center;
+  color : white;
+  font-family: DM Sans, sans-serif;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.principal-button {
+  color: #ececec;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1.5px solid #ececec;
+  border-radius: 20px;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin-top: 30px;
+  margin-bottom: 24px;
+  padding-left: 25px;
+  padding-right: 25px;
+  font-family: DM Sans, sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  display: flex;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
+.principal-button:hover {
+  background-color: rgba(0, 0, 0, 0);
+  background-image: linear-gradient(140deg, #d311af, #6800ba);
+  border-style: solid;
+  border-color: rgba(99, 0, 164, .6);
+}
+
+.button-primary {
+  color: #fff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background-color: #1a1b1f;
+  padding: 12px 25px;
+  font-size: 12px;
+  line-height: 20px;
+  transition: all .2s;
+}
+
+.button-primary:hover {
+  color: #fff;
+  background-color: #32343a;
+}
+
+.button-primary:active {
+  background-color: #43464d;
+}
+
+.title {
+  text-align: center;
+  font-size: xx-large;
+}
+.title img {
+  max-width: 90%; /* Ajuste la largeur de l'image au conteneur */
+  height: auto; /* Ajuste la hauteur proportionnellement */
+  margin-bottom: 10px; /* Ajoute une marge sous l'image */
+  max-height: 200px; /* Définissez la hauteur maximale souhaitée */
+  margin-top: 30px;
+}
+
+
+.title h1 {
+  font-size: 3rem;
+  margin: 0; 
+  font-family: DM Sans, sans-serif; 
+}
+
+.step-container {
+  display: flex;
+  flex-direction: column; /* Modifier la direction en colonne */
+  align-items: center;
+  width: 100%;
+  max-width: 90%;
+  margin-top: 50px; /* Marge supérieure pour les étapes */
+  margin-bottom: 50px;
+}
+
+
+
+.step {
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  margin: 10px;
+  width: 50%; /* Définir la largeur à 100% pour occuper la largeur disponible */
+}
+
+
+.step:hover {
+  transform: scale(1.05);
+}
+
+.step h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.step-description {
+  overflow: hidden;
+  white-space: normal; /* Modifiez nowrap en normal */
+  font-size: 18px; /* Modifiez la taille de la police en 16px ou la taille souhaitée */
+  text-align: left;
+}
+
+
+.step-text {
+  text-align: left; /* Alignez le texte des étapes à gauche */
+  margin-top: 20px;
+  display: inline-block;
+  animation: appear 1s ease-out forwards;
+  opacity: 0;
+}
+
+/* Ajoutez une classe step-point pour les éléments span contenant les étapes */
+.step-point {
+  display: inline-block; /* Afficher les éléments en ligne */
+  margin-right: 5px;
+  opacity: 1; /* Initialement, ils sont invisibles */
+
+}
+
+/* Lorsque la classe step-text est visible (par exemple, au survol), affichez les étapes */
+.step-text:hover .step-point {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+@keyframes appear {
+  0% {
+      opacity: 0;
+      transform: translateY(10px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Media Query for Responsiveness */
+@media (max-width: 768px) {
+  .step-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .title h1 {
+    font-size: 2rem;
+  }
+
+  .step {
+    margin-top: 20px;
+  }
+} 
+
+footer {
+  position:relative;
+  bottom:0;  /* on le colle en bas */
+  left: 0;
+  width: 100%;
+  color: white; /* Couleur du texte du footer */
+  text-align: center;
+  padding: 10px 0; /* Espace intérieur du footer */
+  font-family: DM Sans, sans-serif;
+  font-size: 14px;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Style du conteneur */
+.description-container {
+background-color: rgba(26, 27, 31, 0.8); /* Couleur de fond avec transparence */
+padding: 20px; /* Espace intérieur */
+border-radius: 20px; /* Bordures arrondies */
+text-align: center; /* Alignement du texte à gauche */
+max-width: 800px; /* Largeur maximale du conteneur */
+width: auto;
+margin: 0 auto; /* Centrage horizontal */
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Ombre légère */
+margin-top: 30px;
+margin-left: 20px;
+margin-right: 20px;
+}
+
+/* Style du paragraphe à l'intérieur du conteneur */
+.description {
+font-family: DM Sans, sans-serif; /* Famille de police */
+font-size: 16px; /* Taille de la police */
+color: #ececec; /* Couleur du texte */
+line-height: 1.5; /* Espacement entre les lignes */
+}
+
+/* Style du texte en gras à l'intérieur du paragraphe */
+.description b {
+font-weight: bold; /* Texte en gras */
+color: #d311af; /* Couleur spécifique pour le texte en gras */
+}
+
+
+.connect-button {
+color: #ececec;
+text-align: center;
+background-color: rgba(0, 0, 0, 0);
+border: 1.5px solid #ececec;
+border-radius: 20px;
+flex-direction: row;
+justify-content: space-around;
+align-items: flex-start;
+margin-top: 30px;
+margin-bottom: 24px;
+padding-left: 25px;
+padding-right: 25px;
+font-family: DM Sans, sans-serif;
+font-size: 20px;
+font-weight: 300;
+display: flex;
+width: 100%;
+padding-top: 10px;
+padding-bottom: 10px;
+}
+
+.connect-button:hover {
+background-color: rgba(0, 0, 0, 0);
+background-image: linear-gradient(140deg, #d311af, #6800ba);
+border-style: solid;
+border-color: rgba(99, 0, 164, .6);
+}
+
+.redirect {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.redirect button {
+  color: #ececec;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1.5px solid #ececec;
+  border-radius: 20px;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin-top: 30px;
+  margin-bottom: 24px;
+  padding-left: 25px;
+  padding-right: 25px;
+  font-family: DM Sans, sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  display: flex;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.redirect button:hover {
+  background-color: rgba(0, 0, 0, 0);
+  background-image: linear-gradient(140deg, #d311af, #6800ba);
+  border-style: solid;
+  border-color: rgba(99, 0, 164, .6);
+}
+
+.ma-ligne {
+  border: 2px solid #fff; /* 1px de largeur, style solide, couleur noire */
+  margin-bottom: 20px;
+}
+
+/* Ajoutez ces styles à votre fichier CSS existant */
+
+.card-container {
+  display: flex;
+  justify-content: space-between; /* Les cartes seront côte à côte */
+  flex-wrap: wrap; /* Passage à une disposition en colonne sur les petits écrans */
+  gap: 20px; /* Espacement entre les cartes */
+}
+
+.card {
+  width: calc(50% - 10px); /* 50% de largeur moins l'espacement entre les cartes */
+  background-color: rgba(26, 27, 31, 0.8);
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+}
+
+.card-image {
+  width: auto; /* Largeur de l'image */
+  height: auto; /* Hauteur de l'image */
+  border-radius: 10%; /* Pour une forme circulaire, si nécessaire */
+  display: block; /* Pour centrer l'image horizontalement */
+  margin: 0 auto; /* Pour centrer l'image horizontalement */
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin: 10px 0;
+  color: #ececec;
+}
+
+.card-button {
+  background-color: #d311af;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.card-button:hover {
+  background-color: #6800ba;
+}
+
+/* Styles responsives pour les écrans étroits (par exemple, smartphones) */
+@media (max-width: 768px) {
+  .card {
+    width: 100%; /* Cartes à pleine largeur sur les petits écrans */
+  }
+
+  .card-image {
+    width: 100%; /* Largeur de l'image à 100% pour occuper toute la largeur de la carte */
+    height: auto; /* Hauteur automatique pour conserver les proportions de l'image */
+    display: block; /* Pour centrer l'image horizontalement */
+    margin: 0 auto; /* Pour centrer l'image horizontalement */
+  }
+}
+
+.lens-image {
+  width: 20%; /* Largeur de l'image */
+  height: 20%; /* Hauteur de l'image */
+  border-radius: 10%; /* Pour une forme circulaire, si nécessaire */
+  display: block; /* Pour centrer l'image horizontalement */
+  margin: 0 auto; /* Pour centrer l'image horizontalement */
 }
