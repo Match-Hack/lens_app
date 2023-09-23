@@ -1,13 +1,11 @@
 "use client"; // Marquez cette ligne comme un Client Component
-import {
-  useWalletLogin,
-  useWalletLogout,
-  useActiveProfile,
-} from "@lens-protocol/react-web";
+import React from 'react';
+import Link from 'next/link';
+import { useWalletLogin, useWalletLogout, useActiveProfile } from "@lens-protocol/react-web";
 import { useAccount, useConnect, useDisconnect } from "wagmi";
 import { InjectedConnector } from "wagmi/connectors/injected";
-import Link from 'next/link';
 import ImageLens from './logo_lens.png';
+import MatchLogo from './matchlogo.png';
 
 export default function Authentication() {
   const { execute: login, isPending: isLoginPending } = useWalletLogin();
@@ -36,52 +34,71 @@ export default function Authentication() {
     }
   };
 
+  console.log(wallet);
+
   return (
     <div className="main">
-    <div className="description-container">
-      <div className="description">
-      {loading && <p>Loading...</p>}
-    
-      {!wallet && !loading && (
-        <div>
-        <h1 className="title">Authentication</h1>
-        <button
-          className="principal-button"
-          disabled={isLoginPending}
-          onClick={onLoginClick}
-        >
-          Sign in
-        </button>
+      <div className="description-container">
+        <div className="description">
+          {loading && <p>Loading...</p>}
+
+          {!wallet && !loading && (
+            <div>
+              <h1 className="title">Authentication</h1>
+              <p className="description-text">
+                Connect your wallet with your <b>Lens profile</b> to access your account and discover hackathons
+                and hackers.
+              </p>
+              <img
+                src={ImageLens.src} // Utilisez .src pour obtenir l'URL
+                className="lens-image"
+              />
+              <button
+                className="principal-button"
+                disabled={isLoginPending}
+                onClick={onLoginClick}
+              >
+                Sign in
+              </button>
+            </div>
+          )}
+
+          {wallet && !loading && (
+            <div>
+              <div className="redirect">
+                <img
+                  src={MatchLogo.src} // Utilisez .src pour obtenir l'URL
+                  className="match-image"
+                />
+                <Link href="/hackathons">
+                  <button>Discover Hackathons & Hackers🔥</button>
+                </Link>
+              </div>
+              <div className="ma-ligne"></div>
+              <img
+                src={ImageLens.src} // Utilisez .src pour obtenir l'URL
+                className="lens-image"
+              />
+              <h1 className="title">Your profile 🌱</h1>
+
+              <h2><b>{wallet.handle}</b></h2>
+              <p>{wallet.bio}</p>
+              <button
+                onClick={logout}
+                className="principal-button"
+              >
+                Edit profile
+              </button>
+              <button
+                onClick={logout}
+                className="principal-button"
+              >
+                Sign out
+              </button>
+            </div>
+          )}
         </div>
-      )}
-      
-      {wallet && !loading && (
-        
-        <div>
-          <div className="redirect">
-            <Link href="/hackathons">
-              <button>🔥Hackathons & Hackers🔥</button>
-            </Link>
-          </div>
-          <div className="ma-ligne"></div>
-          <img
-            src={ImageLens.src} // Utilisez .src pour obtenir l'URL
-            className="lens-image"
-          />
-          <h1 className="title">Your profile 🌱</h1>
-          
-          <h2><b>{wallet.handle}</b></h2>
-          <p>{wallet.bio}</p>
-          <button
-            onClick={logout}
-            className="principal-button"
-          >
-            Sign out
-          </button>
-        </div>
-      )}
       </div>
-    </div>
     </div>
   );
 }
