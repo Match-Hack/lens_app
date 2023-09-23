@@ -16,7 +16,7 @@ export default function MatchingPage() {
 
   return (
     <div className="">
-      <Matching hack_name={hack_name}></Matching>
+      <Matching ></Matching>
     </div>
   );
 }

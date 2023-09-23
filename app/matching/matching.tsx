@@ -1,20 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import './matching.css';
+import { useActiveProfile } from "@lens-protocol/react-web";
+import { getFilteredProfile } from '../api/callTaMere';
+import { useSearchParams } from 'next/navigation'
 
 export default function Matching() {
   const [profiles, setProfiles] = useState([]);
   const [currentProfileIndex, setCurrentProfileIndex] = useState(0);
+  const { data: wallet, loading } = useActiveProfile();
+  const searchParams = useSearchParams()
+  const hack_name = searchParams.get('hack_name')
 
   useEffect(() => {
     // Chargez les profils depuis votre API au montage du composant
-    fetchProfilesFromAPI()
-      .then((data) => {
-        setProfiles(data.profiles);
-      })
-      .catch((error) => {
-        console.error('Erreur lors du chargement des profils :', error);
-      });
-  }, []);
+    console.log(wallet?.handle, hack_name, loading)
+    if(!loading && wallet?.handle !== undefined && hack_name !== null){
+      getFilteredProfile(wallet?.handle ?? "",hack_name)
+        .then((data) => {
+          setProfiles(data.profiles);
+        })
+        .catch((error) => {
+          console.error('Erreur lors du chargement des profils :', error);
+        });
+    }
+  }, [loading, wallet?.handle]);
 
   const fetchProfilesFromAPI = () => {
     // Simulation de l'appel à votre API avec des données fictives
@@ -81,9 +90,12 @@ export default function Matching() {
 
   const currentProfile = profiles[currentProfileIndex];
 
+ 
+
   return (
     <div className="main">
-      {currentProfile ? (
+      {loading && <p>Loading...</p>}
+      {currentProfile && !loading ? (
         <div className="profile-card">
           {/* Affichez ici les informations du profil avec styles */}
           <div className="profile-image">

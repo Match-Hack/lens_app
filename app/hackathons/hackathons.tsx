@@ -9,10 +9,12 @@ export default function Hackathons() {
 
   const Register = async (hack_name: string) => {
     try {
-      await registerForHackathon(wallet?.handle ?? "", hack_name);
+      const result = await registerForHackathon(wallet?.handle ?? "", hack_name);
       // Une fois que l'enregistrement est terminé, effectuez la redirection
       console.log("Enregistrement au hackathon réussi !");
-      window.location.href = `/matching?hack_name=${hack_name}`;
+      if(result==true){
+        window.location.href = `/matching?hack_name=${hack_name}`;
+      }
     } catch (error) {
       // Gérer les erreurs si nécessaire
       console.error("Erreur lors de l'enregistrement au hackathon :", error);

@@ -47,9 +47,10 @@ async function like(lens1: string, lens2: string) {
         });
 }
 
-async function getFilteredProfile(hackathonName : string){
+async function getFilteredProfile(lens : string, hackathonName : string){
     const data = {
-        hackathonName: hackathonName
+        hackathonName: hackathonName, 
+        lens : lens
     };
 
     fetch(url + "/profile/profileFiltered", {
@@ -68,8 +69,9 @@ async function getFilteredProfile(hackathonName : string){
         });
 }
 
-async function registerForHackathon(lens : string, hackathonName : string){
+async function registerForHackathon(lens : string, hackathonName : string) : Promise<boolean>{
     console.log(lens, hackathonName);
+    try{
     const data = {
         lensProfile: lens,
         hackathon: hackathonName
@@ -85,10 +87,17 @@ async function registerForHackathon(lens : string, hackathonName : string){
         .then(response => response.json())
         .then(data => {
             console.log(data);
+            
         })
         .catch(error => {
             console.error(error);
+            
         });
+        return true;
+    }catch(e){
+        return false;
+    }
+        
 }
 
 // export all the functions
