@@ -14,50 +14,21 @@ export default function Matching() {
   useEffect(() => {
     // Chargez les profils depuis votre API au montage du composant
     console.log(wallet?.handle, hack_name, loading)
-    if(!loading && wallet?.handle !== undefined && hack_name !== null){
+    if(!loading && wallet?.handle !== undefined && hack_name !== null && profiles.length === 0){
       getFilteredProfile(wallet?.handle ?? "",hack_name)
         .then((data) => {
-          setProfiles(data.profiles);
+          console.log("data", data)
+          setProfiles(data.Social);
         })
         .catch((error) => {
           console.error('Erreur lors du chargement des profils :', error);
         });
     }
-  }, [loading, wallet?.handle]);
-
-  const fetchProfilesFromAPI = () => {
-    // Simulation de l'appel à votre API avec des données fictives
-    return new Promise((resolve, reject) => {
-      // Données fictives de profils
-      const fakeProfiles = {
-        profiles: [
-          {
-            profileName: 'John Doe',
-            profileBio: 'Software Developer',
-            profileDisplayName: 'John',
-            profileImage: 'john.jpg',
-          },
-          {
-            profileName: 'Jane Smith',
-            profileBio: 'Designer',
-            profileDisplayName: 'Jane',
-            profileImage: 'jane.jpg',
-          },
-          {
-            profileName: 'Bob Johnson',
-            profileBio: 'Data Analyst',
-            profileDisplayName: 'Bob',
-            profileImage: 'bob.jpg',
-          },
-        ],
-      };
-
-      // Simuler un délai d'attente de 1 seconde (comme une requête HTTP)
-      setTimeout(() => {
-        resolve(fakeProfiles);
-      }, 1000);
-    });
-  };
+    console.log("profiles", profiles)
+    if(profiles.length >0){
+      console.log("profiles", profiles)
+    }
+  }, [loading, wallet?.handle,profiles]);
 
   const handleSwipeLeft = () => {
     // Enregistrez la décision de swipe à gauche (passer) via votre API si nécessaire
@@ -74,9 +45,9 @@ export default function Matching() {
   const loadNextProfile = () => {
     // Si nous avons atteint la fin de la liste des profils, rechargez les profils depuis l'API
     if (currentProfileIndex >= profiles.length - 1) {
-      fetchProfilesFromAPI()
+      getFilteredProfile(wallet?.handle ?? "",hack_name)
         .then((data) => {
-          setProfiles(data.profiles);
+          setProfiles(data.Social);
           setCurrentProfileIndex(0);
         })
         .catch((error) => {

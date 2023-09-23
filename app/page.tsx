@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useWalletLogin, useWalletLogout, useActiveProfile } from "@lens-protocol/react-web";
 import { useAccount, useConnect, useDisconnect } from "wagmi";
 import { InjectedConnector } from "wagmi/connectors/injected";
-import ImageLens from './logo_lens.png';
+import ImageLens from './lens_match.png';
 import MatchLogo from './matchlogo.png';
 
 export default function Authentication() {
