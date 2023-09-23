@@ -1,0 +1,35 @@
+/* Navbar.css */
+
+.navbar {
+    display: flex;
+    justify-content: center; /* Centre la navbar horizontalement */
+    align-items: center;
+    padding: 10px 20px;
+    background-color: transparent; /* Supprime le fond de la navbar */
+    margin-top: 20px;
+  }
+  
+  .navbar-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+  }
+  
+  .navbar-item {
+    margin-right: 20px; /* Augmentez cette valeur pour augmenter l'espacement */
+    justify-content: space-between;
+  }
+  
+  .navbar-link {
+    text-decoration: none;
+    color: #ffffff; /* Couleur du texte des liens */
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-link:hover {
+    color: #d311af; /* Couleur au survol des liens */
+  }
+  
