@@ -339,6 +339,7 @@ border-color: rgba(99, 0, 164, .6);
   border-radius: 10%; /* Pour une forme circulaire, si nécessaire */
   display: block; /* Pour centrer l'image horizontalement */
   margin: 0 auto; /* Pour centrer l'image horizontalement */
+  margin-bottom: 20px;
 }
 
 .card-title {
