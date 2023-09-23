@@ -1,5 +1,6 @@
 import Image1 from './ethglobalny.png';
 import Image2 from './ethglobalinstanbul.png';
+import Link from 'next/link';
 
 export default function Hackathons() {
   return (
@@ -10,7 +11,9 @@ export default function Hackathons() {
             src={Image1.src} // Utilisez .src pour obtenir l'URL
             className="card-image"
           />
-          <button className="card-button">Let's MAAATCH 🔥</button>
+          <Link href="/matching?hack_name=ETHGLOBAL_PARIS">
+            <button className="card-button">Let's MAAATCH 🔥</button>
+          </Link>
         </div>
 
         <div className="card">
@@ -18,7 +21,11 @@ export default function Hackathons() {
             src={Image2.src} // Utilisez .src pour obtenir l'URL
             className="card-image"
           />
-          <button className="card-button">Let's MAAATCH 🔥</button>
+          <Link href="/matching?hack_name=ETHGLOBAL_INSTANBUL">
+            <button className="card-button">Let's MAAATCH 🔥</button>
+          </Link>
+
+          
         </div>
       </div>
     </div>
