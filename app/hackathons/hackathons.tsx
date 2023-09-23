@@ -1,8 +1,24 @@
+"use client";
 import Image1 from './ethglobalny.png';
 import Image2 from './ethglobalinstanbul.png';
-import Link from 'next/link';
+import { registerForHackathon } from '../api/callTaMere';
+import { useActiveProfile } from "@lens-protocol/react-web";
 
 export default function Hackathons() {
+  const { data: wallet, loading } = useActiveProfile();
+
+  const Register = async (hack_name: string) => {
+    try {
+      await registerForHackathon(wallet?.handle ?? "", hack_name);
+      // Une fois que l'enregistrement est terminé, effectuez la redirection
+      console.log("Enregistrement au hackathon réussi !");
+      window.location.href = `/matching?hack_name=${hack_name}`;
+    } catch (error) {
+      // Gérer les erreurs si nécessaire
+      console.error("Erreur lors de l'enregistrement au hackathon :", error);
+    }
+  };
+
   return (
     <div className="main">
       <div className="card-container">
@@ -11,9 +27,12 @@ export default function Hackathons() {
             src={Image1.src} // Utilisez .src pour obtenir l'URL
             className="card-image"
           />
-          <Link href="/matching?hack_name=ETHGLOBAL_PARIS">
-            <button className="card-button">Let's MAAATCH 🔥</button>
-          </Link>
+          <button
+            className="card-button"
+            onClick={() => Register("ETHGLOBAL_NY")}
+          >
+            Let's MAAATCH 🔥
+          </button>
         </div>
 
         <div className="card">
@@ -21,11 +40,12 @@ export default function Hackathons() {
             src={Image2.src} // Utilisez .src pour obtenir l'URL
             className="card-image"
           />
-          <Link href="/matching?hack_name=ETHGLOBAL_INSTANBUL">
-            <button className="card-button">Let's MAAATCH 🔥</button>
-          </Link>
-
-          
+          <button
+            className="card-button"
+            onClick={() => Register("ETHGLOBAL_INSTANBUL")}
+          >
+            Let's MAAATCH 🔥
+          </button>
         </div>
       </div>
     </div>

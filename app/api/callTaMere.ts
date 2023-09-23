@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 dotenv.config();
-const url = process.env.REACT_APP_API_URL;
+const url = process.env.NEXT_PUBLIC_API_URL;
 
 async function getPoapInCommon(lens1: string, lens2: string) {
     const data = {
@@ -68,17 +68,13 @@ async function getFilteredProfile(hackathonName : string){
         });
 }
 
-async function registerForHackathon(lens : string, hackathonName : string, github : string, twitter : string, telegram:string,bio:string,skills:string){
+async function registerForHackathon(lens : string, hackathonName : string){
+    console.log(lens, hackathonName);
     const data = {
         lensProfile: lens,
-        hackathon: hackathonName,
-        github:github, 
-        twitter:twitter,
-        telegram:telegram,
-        bio:bio,
-        skills:skills
+        hackathon: hackathonName
     };
-
+    console.log(url);
     fetch(url + "/user/newUser", {
         method: 'POST',
         headers: {
