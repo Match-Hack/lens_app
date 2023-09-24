@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "yarn build && npx thirdweb@latest upload build"
   },
   "dependencies": {
     "@lens-protocol/react-web": "^1.3.1",

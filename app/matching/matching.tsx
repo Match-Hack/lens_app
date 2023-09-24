@@ -43,7 +43,7 @@ export default function Matching() {
   const handleSwipeRight = async () => {
     try {
       // Enregistrez la décision de swipe à droite (like) via votre API
-      const result = await like(wallet?.handle, currentProfile.handle);
+      const result = await like(wallet!?.handle, (currentProfile as any).handle);
       if (result) {
         // Si c'est un match, mettez à jour l'état pour afficher le message
         setIsMatch(true);
@@ -83,26 +83,26 @@ export default function Matching() {
         <div className="profile-card">
           {/* Affichez ici les informations du profil avec styles */}
           <div className="profile-image">
-            <Link href={`/profile/${currentProfile.handle}`}>
-              {currentProfile.picture?.uri ? (
-                <img src={currentProfile.picture.uri} alt={currentProfile.name} />
-              ) : currentProfile.picture?.original?.url ? (
-                <img src={currentProfile.picture.original.url} alt={currentProfile.name} />
+            <Link href={`/profile/${(currentProfile as any).handle}`}>
+              {(currentProfile as any).picture?.uri ? (
+                <img src={(currentProfile as any).picture.uri} alt={(currentProfile as any).name} />
+              ) : (currentProfile as any).picture?.original?.url ? (
+                <img src={(currentProfile as any).picture.original.url} alt={(currentProfile as any).name} />
               ) : (
                 <p>No profile picture available</p>
               )}
             </Link>
           </div>
-          <h1 className="profile-name">{currentProfile.name}</h1>
-          <p className="profile-bio">{currentProfile.bio}</p>
-          <p className="profile-display-name">{currentProfile.handle}</p>
+          <h1 className="profile-name">{(currentProfile as any).name}</h1>
+          <p className="profile-bio">{(currentProfile as any).bio}</p>
+          <p className="profile-display-name">{(currentProfile as any).handle}</p>
 
           {/* Affichez les POAPs en commun */}
-          {currentProfile.commonPoaps && currentProfile.commonPoaps.length > 0 ? (
+          {(currentProfile as any).commonPoaps && (currentProfile as any).commonPoaps.length > 0 ? (
             <div className="poap-container">
               <h2><b>POAPs in Common:</b></h2>
               <div className="poap-list">
-                {currentProfile.commonPoaps.map((poap, index) => (
+                {(currentProfile as any).commonPoaps.map((poap, index) => (
                   <div className="poap-item" key={index}>
                     <p>{poap.eventName}</p>
                     <img
