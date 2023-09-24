@@ -21,7 +21,7 @@ export default function Navbar() {
         </li>
         <li className="navbar-item">
           <Link href="/messaging">
-            <p className="navbar-link">Messagerie</p>
+            <p className="navbar-link">Chat</p>
           </Link>
         </li>
       </ul>
