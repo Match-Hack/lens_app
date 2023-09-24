@@ -12,8 +12,9 @@
     margin-bottom: 20px;
     min-width: 400px;
     min-height: auto;
-    max-height: 800px;
+    max-height: 700px;
     color: black;
+    justify-content: center;
   }
   
   .profile-image img {
