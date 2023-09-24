@@ -20,15 +20,9 @@ export default function Navbar() {
           </Link>
         </li>
         <li className="navbar-item">
-<<<<<<< HEAD
           <a href="https://xmtp.chat/" target="_blank" rel="noopener noreferrer" className="navbar-link">
-            Messaging
+            Chat
           </a>
-=======
-          <Link href="/messaging">
-            <p className="navbar-link">Chat</p>
-          </Link>
->>>>>>> 6bec93b33296e40b0d71669998dccbb8841f4f2a
         </li>
       </ul>
     </nav>

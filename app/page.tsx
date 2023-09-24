@@ -1,4 +1,4 @@
-"use client"; // Marquez cette ligne comme un Client Component
+'use client'; 
 import React from 'react';
 import Link from 'next/link';
 import { useWalletLogin, useWalletLogout, useActiveProfile } from "@lens-protocol/react-web";
@@ -34,20 +34,19 @@ export default function Authentication() {
     }
   };
 
-  console.log(wallet);
-
   return (
     <div className="main">
       <div className="description-container">
         <div className="description">
           {loading && (
             <div>
-            <img
-            src={MatchLogo.src} // Utilisez .src pour obtenir l'URL
-            className="match-image"
-          />
-          <p>Loading...</p>
-          </div>)}
+              <img
+                src={MatchLogo.src}
+                className="match-image"
+              />
+              <p>Loading...</p>
+            </div>
+          )}
 
           {!wallet && !loading && (
             <div>
@@ -57,7 +56,7 @@ export default function Authentication() {
                 and hackers.
               </p>
               <img
-                src={ImageLens.src} // Utilisez .src pour obtenir l'URL
+                src={ImageLens.src}
                 className="lens-image"
               />
               <button
@@ -74,7 +73,7 @@ export default function Authentication() {
             <div>
               <div className="redirect">
                 <img
-                  src={MatchLogo.src} // Utilisez .src pour obtenir l'URL
+                  src={MatchLogo.src}
                   className="match-image"
                 />
                 <Link href="/hackathons">
@@ -83,15 +82,19 @@ export default function Authentication() {
               </div>
               <div className="ma-ligne"></div>
               {wallet.picture ? (
-              <img src={(wallet.picture as any).original.url} alt="Profile Picture" className='profile-image' />
-                ) : (
-                  <img
-                          src={ImageLens.src} // Utilisez .src pour obtenir l'URL
-                          className="lens-image"
-                        />
-                )}
+                <img
+                  src={wallet.picture.picture?.uri || wallet.picture.original?.url || ImageLens.src}
+                  alt="Profile Picture"
+                  className='profile-image'
+                />
+              ) : (
+                <img
+                  src={ImageLens.src}
+                  alt="Profile Picture"
+                  className="lens-image"
+                />
+              )}
               <h1 className="title">Your profile 🌱</h1>
-              
               <h2><b>{wallet.handle}</b></h2>
               <p>{wallet.bio}</p>
               <Link href="/myprofile" className='principal-button'>
