@@ -5,6 +5,7 @@ import { getFilteredProfile, like, getPoapInCommon } from '../api/callTaMere';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import MatchLogo from './matchlogo.png';
+import router from 'next/router';
 
 export default function Matching() {
   const [profiles, setProfiles] = useState([]);
@@ -74,6 +75,17 @@ export default function Matching() {
     setCurrentProfileIndex(currentProfileIndex + 1);
   };
 
+  const handleMessagingClick = () => {
+    // Navigate to messaging page with two arguments as props
+    router.push({
+      pathname: '/messaging',
+      query: {
+        data1: 'your first data here',
+        data2: 'your second data here',
+      },
+    });
+  };
+
   return (
     <div className="main">
       {loading && (
@@ -137,9 +149,12 @@ export default function Matching() {
             <div className="description">
               <p className="match-message"><b>🔥It's a MATCH !🔥</b></p>
               <button onClick={handleMatchClick} className="principal-button">⏭️Continue swiping</button>
-              <Link href="/messaging">
-                <button className="principal-button">📱Go to Messaging</button>
-              </Link>
+              <button
+                className="principal-button"
+                onClick={() => window.open('https://xmtp.chat/', '_blank')}
+              >
+                📱Go to Messaging
+              </button>
             </div>
           </div>
         </div>

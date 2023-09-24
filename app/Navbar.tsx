@@ -20,7 +20,7 @@ export default function Navbar() {
           </Link>
         </li>
         <li className="navbar-item">
-          <Link href="/messaging">
+          <Link href="/xmtp">
             <p className="navbar-link">Messagerie</p>
           </Link>
         </li>
