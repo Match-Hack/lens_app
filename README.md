@@ -26,7 +26,7 @@ Match&Hack leverages a robust technology stack to provide users with a seamless 
 
 - **User Action:** When a user identifies a potential teammate by swiping right on a profile, and the interest is mutual, a match is made. Users can then initiate communication with their matches.
 - **Technology Used:** XMTP (External Messaging and Transaction Protocol)
-- **Explanation:** XMTP's messaging platform enables secure and private communication between users who have matched. This feature fosters collaboration, knowledge sharing, and efficient team communication within the platform.
+- **Explanation:** XMTP's messaging platform enables secure and private communication between users who have matched. This feature fosters collaboration, knowledge sharing, and efficient team communication within the platform. 
 
 ## Leveraging Partner Technologies
 
