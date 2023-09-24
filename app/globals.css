@@ -464,3 +464,10 @@ border-color: rgba(99, 0, 164, .6);
 .stat-value {
   margin-left: 10px;
 }
+
+.match-message {
+  font-size: 24px; /* Taille de la police */
+  font-weight: bold; /* Gras */
+  color: #ff0000; /* Couleur du texte (rouge dans cet exemple) */
+  /* Ajoutez d'autres styles CSS personnalisés selon vos préférences */
+}

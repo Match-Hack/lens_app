@@ -1,13 +1,14 @@
-"use client";
 import React, { useState, useEffect } from 'react';
 import './matching.css';
 import { useActiveProfile } from "@lens-protocol/react-web";
 import { getFilteredProfile, like } from '../api/callTaMere';
 import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 
 export default function Matching() {
   const [profiles, setProfiles] = useState([]);
   const [currentProfileIndex, setCurrentProfileIndex] = useState(0);
+  const [isMatch, setIsMatch] = useState(false); // Ajout de l'état pour gérer les matches
   const { data: wallet, loading } = useActiveProfile();
   const searchParams = useSearchParams();
   const hack_name = searchParams.get('hack_name');
@@ -42,22 +43,29 @@ export default function Matching() {
     try {
       // Enregistrez la décision de swipe à droite (like) via votre API
       const result = await like(wallet?.handle, currentProfile.handle);
-      console.log("resultat :")
-      console.log(result);
+      if (result) {
+        // Si c'est un match, mettez à jour l'état pour afficher le message
+        setIsMatch(true);
+      }
       // Une fois que le like est enregistré, passez au profil suivant
       setCurrentProfileIndex(currentProfileIndex + 1);
     } catch (error) {
       console.error('Erreur lors du swipe à droite :', error);
     }
   };
-  
+
+  const handleMatchClick = () => {
+    // En cliquant sur "It's a MATCH !", passez au profil suivant
+    setIsMatch(false); // Réinitialise l'état de match
+    setCurrentProfileIndex(currentProfileIndex + 1);
+  };
 
   const currentProfile = profiles[currentProfileIndex];
 
   return (
     <div className="main">
       {loading && <p>Loading...</p>}
-      {currentProfile && !loading ? (
+      {currentProfile && !loading && !isMatch ? (
         <div className="profile-card">
           {/* Affichez ici les informations du profil avec styles */}
           <div className="profile-image">
@@ -66,17 +74,31 @@ export default function Matching() {
           <h1 className="profile-name">{currentProfile.name}</h1>
           <p className="profile-bio">{currentProfile.bio}</p>
           <p className="profile-display-name">{currentProfile.handle}</p>
-
+  
           {/* Boutons Swipe et Pass */}
           <div className="buttons">
             <button onClick={handleSwipeLeft} className="swipe-left-button">❌</button>
             <button onClick={handleSwipeRight} className="swipe-right-button">✅</button>
           </div>
         </div>
+      ) : isMatch ? (
+        <div>
+          {/* Utilisez la classe CSS pour styliser le message */}
+          <div className="description-container">
+            <div className="description">
+            <p className="match-message"><b>🔥It's a MATCH !🔥</b></p>
+              <button onClick={handleMatchClick} className="principal-button">⏭️Continue swiping</button>
+              {/* Bouton pour la page de messagerie */}
+              <Link href="/messaging"> {/* Assurez-vous que "/messaging" est le bon chemin */}
+                <button className="principal-button">📱Go to Messaging</button>
+              </Link>
+            </div>
+          </div>
+        </div>
       ) : (
         <p className="no-profiles-message">No more profiles to display.</p>
       )}
-
+  
       {profiles.length > 0 && currentProfileIndex >= profiles.length && (
         <button onClick={loadProfilesFromAPI} className="load-next-button">Load More Profile</button>
       )}

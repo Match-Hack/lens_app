@@ -88,3 +88,18 @@
     background-color: #5bbd52;
     border-radius: 80%;
   }
+
+  .message-button {
+    background-color: #28a745; /* Couleur de fond */
+    color: #fff; /* Couleur du texte */
+  }
+  
+  /* Styles responsifs pour les boutons */
+  @media screen and (max-width: 768px) {
+    .principal-button,
+    .message-button {
+      margin-right: 0; /* Supprimez la marge entre les boutons */
+      margin-top: 10px; /* Ajoutez de l'espace en haut des boutons */
+      width: 100%; /* Largeur de 100% pour occuper toute la largeur de l'écran */
+    }
+  }
