@@ -4,7 +4,7 @@ import { useActiveProfile } from "@lens-protocol/react-web";
 
 export default function Navbar() {
   const { data: wallet, error, loading } = useActiveProfile();
-  if(loading) return <></>;
+  if (loading) return <></>;
   if (wallet === null) return <></>;
   return (
     <nav className="navbar">
@@ -20,9 +20,9 @@ export default function Navbar() {
           </Link>
         </li>
         <li className="navbar-item">
-          <Link href="/messaging">
-            <p className="navbar-link">Messagerie</p>
-          </Link>
+          <a href="https://xmtp.chat/" target="_blank" rel="noopener noreferrer" className="navbar-link">
+            Messaging
+          </a>
         </li>
       </ul>
     </nav>

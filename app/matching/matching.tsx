@@ -137,9 +137,30 @@ export default function Matching() {
             <div className="description">
               <p className="match-message"><b>🔥It's a MATCH !🔥</b></p>
               <button onClick={handleMatchClick} className="principal-button">⏭️Continue swiping</button>
-              <Link href="/messaging">
-                <button className="principal-button">📱Go to Messaging</button>
-              </Link>
+              <button
+                className="principal-button"
+                onClick={async () => {
+                  try {
+                    const lensProfileAddress = profiles[currentProfileIndex - 1].ownedBy;
+                  console.log('lensProfileAddress', lensProfileAddress);
+
+                    await navigator.clipboard.writeText(lensProfileAddress as string);
+                    console.log('Lens profile address copied to clipboard');
+                    window.open('https://xmtp.chat/', '_blank');
+                  } catch (err) {
+                    console.warn('Failed to write lens profile address to the clipboard.', err);
+                  }
+                  // Open new tab
+                  
+
+                  // Copy lens profile address to clipboard
+                  
+                  // Try to write to clipboard
+                  
+                }}
+              >
+                📱Go to Messaging
+              </button>
             </div>
           </div>
         </div>
