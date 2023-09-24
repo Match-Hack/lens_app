@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import './matching.css';
 import { useActiveProfile } from "@lens-protocol/react-web";
-import { getFilteredProfile } from '../api/callTaMere';
+import { getFilteredProfile, like } from '../api/callTaMere';
 import { useSearchParams } from 'next/navigation';
 
 export default function Matching() {
@@ -38,11 +38,19 @@ export default function Matching() {
     setCurrentProfileIndex(currentProfileIndex + 1);
   };
 
-  const handleSwipeRight = () => {
-    // Enregistrez la décision de swipe à droite (like) via votre API si nécessaire
-    // Passez au profil suivant
-    setCurrentProfileIndex(currentProfileIndex + 1);
+  const handleSwipeRight = async () => {
+    try {
+      // Enregistrez la décision de swipe à droite (like) via votre API
+      const result = await like(wallet?.handle, currentProfile.handle);
+      console.log("resultat :")
+      console.log(result);
+      // Une fois que le like est enregistré, passez au profil suivant
+      setCurrentProfileIndex(currentProfileIndex + 1);
+    } catch (error) {
+      console.error('Erreur lors du swipe à droite :', error);
+    }
   };
+  
 
   const currentProfile = profiles[currentProfileIndex];
 
