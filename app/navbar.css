@@ -7,6 +7,7 @@
     padding: 10px 20px;
     background-color: transparent; /* Supprime le fond de la navbar */
     margin-top: 20px;
+    margin-bottom: 20px;
   }
   
   .navbar-list {
