@@ -25,6 +25,7 @@
     flex: 1;
     overflow-y: auto;
     padding: 10px;
+    color: #000; /* Set the font color to black */
   }
   
   .chat-input {
