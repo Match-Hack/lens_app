@@ -12,6 +12,7 @@
     margin-bottom: 20px;
     min-width: 400px;
     min-height: auto;
+    max-height: 800px;
     color: black;
   }
   

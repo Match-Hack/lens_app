@@ -4,6 +4,7 @@ import { useActiveProfile } from "@lens-protocol/react-web";
 import { getFilteredProfile, like } from '../api/callTaMere';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import MatchLogo from './matchlogo.png';
 
 export default function Matching() {
   const [profiles, setProfiles] = useState([]);
@@ -64,17 +65,34 @@ export default function Matching() {
 
   return (
     <div className="main">
-      {loading && <p>Loading...</p>}
+      {loading && (
+        <div>
+          <img
+            src={MatchLogo.src} // Utilisez .src pour obtenir l'URL
+            className="match-image"
+          />
+          <p>Loading...</p>
+        </div>
+      )}
+
       {currentProfile && !loading && !isMatch ? (
         <div className="profile-card">
           {/* Affichez ici les informations du profil avec styles */}
           <div className="profile-image">
-            <img src={currentProfile.picture?.uri} alt={currentProfile.name} />
+          <Link href={`/profile/${currentProfile.handle}`}>
+              {currentProfile.picture?.uri ? (
+                <img src={currentProfile.picture.uri} alt={currentProfile.name} />
+              ) : currentProfile.picture?.original?.url ? (
+                <img src={currentProfile.picture.original.url} alt={currentProfile.name} />
+              ) : (
+                <p>No profile picture available</p>
+              )}
+          </Link>
           </div>
           <h1 className="profile-name">{currentProfile.name}</h1>
           <p className="profile-bio">{currentProfile.bio}</p>
           <p className="profile-display-name">{currentProfile.handle}</p>
-  
+
           {/* Boutons Swipe et Pass */}
           <div className="buttons">
             <button onClick={handleSwipeLeft} className="swipe-left-button">❌</button>
@@ -86,7 +104,7 @@ export default function Matching() {
           {/* Utilisez la classe CSS pour styliser le message */}
           <div className="description-container">
             <div className="description">
-            <p className="match-message"><b>🔥It's a MATCH !🔥</b></p>
+              <p className="match-message"><b>🔥It's a MATCH !🔥</b></p>
               <button onClick={handleMatchClick} className="principal-button">⏭️Continue swiping</button>
               {/* Bouton pour la page de messagerie */}
               <Link href="/messaging"> {/* Assurez-vous que "/messaging" est le bon chemin */}
@@ -95,10 +113,10 @@ export default function Matching() {
             </div>
           </div>
         </div>
-      ) : (
+      ) : !loading && (
         <p className="no-profiles-message">No more profiles to display.</p>
       )}
-  
+
       {profiles.length > 0 && currentProfileIndex >= profiles.length && (
         <button onClick={loadProfilesFromAPI} className="load-next-button">Load More Profile</button>
       )}

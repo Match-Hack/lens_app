@@ -21,8 +21,13 @@ export default function Profile({
             src={profile.picture.original.url}
           />
         )}
-        <h1 className="text-3xl my-3">{profile?.handle}</h1>
-        <h3 className="text-xl mb-4">{profile?.bio}</h3>
+        <div className="description-container">
+            <div className="description">
+              <h1 className="text-3xl my-3">{profile?.handle}</h1>
+              <h3 className="text-xl mb-4">{profile?.bio}</h3>
+              <h3 className="text-xl mb-3">Publications</h3>
+            </div>
+        </div>
         {profile && <Publications profile={profile} />}
       </div>
     </div>

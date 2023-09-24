@@ -40,7 +40,14 @@ export default function Authentication() {
     <div className="main">
       <div className="description-container">
         <div className="description">
-          {loading && <p>Loading...</p>}
+          {loading && (
+            <div>
+            <img
+            src={MatchLogo.src} // Utilisez .src pour obtenir l'URL
+            className="match-image"
+          />
+          <p>Loading...</p>
+          </div>)}
 
           {!wallet && !loading && (
             <div>
