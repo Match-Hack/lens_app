@@ -82,14 +82,14 @@ export default function Authentication() {
                 </Link>
               </div>
               <div className="ma-ligne"></div>
-              {wallet.picture ? (
-              <img src={wallet.picture.original.url} alt="Profile Picture" className='profile-image' />
+              {/*wallet.picture ? (
+              <img src={wallet.picture.original.uri} alt="Profile Picture" className='profile-image' />
                 ) : (
                   <img
                           src={ImageLens.src} // Utilisez .src pour obtenir l'URL
                           className="lens-image"
                         />
-                )}
+                )*/}
               <h1 className="title">Your profile 🌱</h1>
               
               <h2><b>{wallet.handle}</b></h2>
