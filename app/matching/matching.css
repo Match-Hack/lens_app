@@ -12,8 +12,9 @@
     margin-bottom: 20px;
     min-width: 400px;
     min-height: auto;
-    max-height: 800px;
+    max-height: 900px;
     color: black;
+    justify-content: center;
   }
   
   .profile-image img {
@@ -35,7 +36,7 @@
   
   .profile-display-name {
     font-size: 16px;
-    color: #555;
+    color: #1f1e1e;
     margin-bottom: 20px;
   }
   
@@ -104,3 +105,46 @@
       width: 100%; /* Largeur de 100% pour occuper toute la largeur de l'écran */
     }
   }
+
+  /* CSS pour afficher les POAPs */
+.poap-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.poap-container h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.poap-container p {
+  margin-bottom: 20px;
+}
+
+.poap-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.poap-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  width: calc(33.33% - 20px); /* Trois éléments par ligne */
+  box-sizing: border-box;
+  text-align: center;
+  margin-bottom: 10px;
+  justify-content: center;
+}
+
+.poap-image {
+  max-width: 40%;
+  height: auto;
+  justify-content: center;
+  border-radius: 50%;
+  text-align: center;
+}

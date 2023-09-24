@@ -32,7 +32,7 @@ export default function MyProfile() {
       <h1 className='title'>My Profile</h1>
       <div className="profile-picture">
         {wallet.picture ? (
-          <img src={wallet.picture.original.url} alt="Profile Picture" className='profile-image' />
+          <img src={(wallet.picture as any).original.url} alt="Profile Picture" className='profile-image' />
         ) : (
           <div className="no-picture">No Picture</div>
         )}
@@ -71,27 +71,27 @@ export default function MyProfile() {
           </tr>
           <tr>
             <td className="table-label">Interests:</td>
-            <td>{wallet.interests.length ? wallet.interests.join(', ') : 'None'}</td>
+            <td>{wallet.interests!.length ? wallet.interests!.join(', ') : 'None'}</td>
           </tr>
           <tr>
             <td className="table-label">Location:</td>
-            <td>{wallet.attributes.location.attribute.value || 'None'}</td>
+            <td>{(wallet.attributes.location as any).attribute.value || 'None'}</td>
           </tr>
           <tr>
             <td className="table-label">Education:</td>
-            <td>{wallet.attributes.education.attribute.value || 'None'}</td>
+            <td>{(wallet.attributes.education as any).attribute.value || 'None'}</td>
           </tr>
           <tr>
             <td className="table-label">Experience:</td>
-            <td>{wallet.attributes.experience.attribute.value || 'None'}</td>
+            <td>{(wallet.attributes.experience as any).attribute.value || 'None'}</td>
           </tr>
           <tr>
             <td className="table-label">Projects:</td>
-            <td>{wallet.attributes.projects.attribute.value || 'None'}</td>
+            <td>{(wallet.attributes.projects as any).attribute.value || 'None'}</td>
           </tr>
           <tr>
             <td className="table-label">Skills:</td>
-            <td>{wallet.attributes.skills.attribute.value || 'None' }</td>
+            <td>{(wallet.attributes.skills as any).attribute.value || 'None' }</td>
           </tr>
         </tbody>
       </table>
