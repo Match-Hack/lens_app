@@ -83,7 +83,7 @@ export default function Authentication() {
               <div className="ma-ligne"></div>
               {wallet.picture ? (
                 <img
-                  src={wallet.picture.picture?.uri || wallet.picture.original?.url || ImageLens.src}
+                  src={(wallet.picture as any).picture?.uri || (wallet.picture as any).original?.url || ImageLens.src}
                   alt="Profile Picture"
                   className='profile-image'
                 />
