@@ -139,8 +139,8 @@ export default function Matching() {
                 className="principal-button"
                 onClick={async () => {
                   try {
-                    const lensProfileAddress = profiles[currentProfileIndex - 1].ownedBy;
-                  console.log('lensProfileAddress', lensProfileAddress);
+                    const lensProfileAddress = profiles.length > 0 ? (profiles[currentProfileIndex - 1] as any).ownedBy : '';
+                    console.log('lensProfileAddress', lensProfileAddress);
 
                     await navigator.clipboard.writeText(lensProfileAddress as string);
                     console.log('Lens profile address copied to clipboard');
